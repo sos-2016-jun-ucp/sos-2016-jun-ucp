@@ -1,0 +1,12 @@
+[
+{"community":"Andalucia","year":2015,"vacancies":52988,"demand":83754},
+{"community":"Aragon","year":2015,"vacancies":6788,"demand":5986},
+{"community":"Baleares","year":2015,"vacancies":5266,"demand":5359},
+{"community":"Madrid","year":2015,"vacancies":41706,"demand":59951},
+{"community":"Madrid","year":2014,"vacancies":41283,"demand":57747},
+{"community":"Galicia","year":2014,"vacancies":12034,"demand":17142},
+{"community":"Cantabria","year":2014,"vacancies":2350,"demand":6974},
+{"community":"Andalucia","year":2014,"vacancies":53499,"demand":87279},
+{"community":"Andalucia","year":2005,"vacancies":1984,"demand":4010},
+{"community":"Andalucia","year":2000,"vacancies":1990,"demand":4000}
+]

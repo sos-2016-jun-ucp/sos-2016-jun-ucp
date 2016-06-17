@@ -1,0 +1,107 @@
+<html>
+  <head>
+    <!-- JQUERY -->
+    <!--script src="https://code.jquery.com/jquery-1.12.2.js"></script-->
+    <script src="/lib/jquery-1.12.2.min.js"></script>
+    <!--script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script-->
+    <!-- CSS -->
+    <!-- COLUMNS -->
+    <!--script src="/lib/jquery.columns.min.js"></script>
+    <link rel="stylesheet" href="/css/classic.css"-->
+    <!-- JSON to TABLE -->
+    <!--script src="https://github.com/jongha/jquery-jsontotable/blob/master/src/jquery.jsontotable.js"></script-->
+    <!-- MR JSONTABLE -->
+    <!--script src="/lib/mrjsontable.js"></script-->
+    <!-- COOLTABLE -->
+    <script src="/lib/jquery.cooltable.js"></script>
+    <!-- AUXILIAR -->
+    <script type="text/javascript" src="/lib/htmlFunctions2.js"></script>
+  </head>
+
+  <body>
+    <h5 class="center">University indicators</h5>
+
+<!--  BOTONES ADD, UPDATE, DELETE...  -->
+    <div class="left" float="left;">
+      <button id="show-data" type="button"  class="waves-effect waves-light btn">
+        Show data</button>
+
+      <button id="add-data" type="button" class="waves-effect waves-light btn">
+        Add data</button>
+
+      <button id="update-data" type="button" class="waves-effect waves-light btn">
+        Update</button>
+
+      <button id="deleteall-data" type="button" class="waves-effect waves-light btn">
+        Delete all</button>
+      <button id="delete-data" class="btn waves-effect waves-light material-icons">
+        Detele selected</button>
+      <button id="load-initial-data" type="button" class="waves-effect waves-light btn">Load data</button>
+      </div>
+
+  <!-- FORMULARIOS -->
+  <br></br>
+
+        <div id="form" class="container">
+          <div>
+            <label for="apikey-input">Apikey:</label><input id="apikey-input" value="read" class="">
+            <label>Community:</label><input id="community-input" class="">
+            <label>Year:</label><input id="year-input" class="">
+            <label>Vacancies:</label><input id="vacancies-input" class="">
+            <label>Demand:</label><input id="demand-input" class="">
+            <label>From year:</label><input id="from-input" class="">
+            <label>To year:</label><input id="to-input" class="">
+            <button id="form-button" class="btn waves-effect waves-light material-icons right">Submit</button>
+          </div>
+
+          <div id="pagination" class="left">
+            <label>Items per page</label>
+            <select id="limit">
+              <option value="5">5</option>
+              <option value="10" selected>10</option>
+              <option value="15">15</option>
+            </select>
+          </div>
+
+          <div class="center">
+            <button id="previous-page" class="btn waves-effect">Previous page</button>
+            <button id="next-page" type="button" class="waves-effect waves-light btn">Next page</button>
+          </div>
+        </div>
+
+        <br></br>
+
+<!-- LOG -->
+  <div  class="container center"style="display:none;" id="logDiv">
+    <br></br>
+    <br></br>
+    <br></br>
+    <p id="log"></p>
+    <button class="btn waves-effect waves-light material-icons center-btn" onclick="logButton()">OK</button>
+    <br></br>
+    <br></br>
+    <br></br>
+    <br></br>
+    <br></br>
+    <br></br>
+    <br></br>
+  </div>
+<!-- TABLA VISUALIZACIÓN DE DATOS -->
+      <div id="data">
+        <table id="data-table" class="responsive-table highlight">
+          <thead>
+            <tr>
+              <th>Community</th>
+              <th>Year</th>
+              <th>Vacancies</th>
+              <th>Demand</th>
+            </tr>
+          </thead>
+        </table>
+      </div>
+      <div id="tabla">
+      </div>
+      <button id="borrartabla">Borrar tabla</button>
+
+  </body>
+</html>
