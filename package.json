@@ -1,0 +1,33 @@
+{
+  "name": "junio",
+  "version": "1.0.0",
+  "description": "",
+  "engines": {
+    "node": "4.3.1",
+    "npm": "2.14.12"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "body-parser": "^1.15.1",
+    "cors": "^2.7.1",
+    "express": "^4.14.0",
+    "passport": "^0.3.2",
+    "passport-localapikey-update": "^0.5.0",
+    "request": "^2.72.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sos-2016-jun-ucp/sos-2016-jun-ucp.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sos-2016-jun-ucp/sos-2016-jun-ucp/issues"
+  },
+  "homepage": "https://github.com/sos-2016-jun-ucp/sos-2016-jun-ucp#readme"
+}

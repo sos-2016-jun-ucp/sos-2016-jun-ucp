@@ -1,7 +1,3 @@
-/*
--funcion update() no hace request de todos los elementos una vez hecha request para PUT.
--cuando se hace get sobre tabla vacia, checkStatus() no ejecuta correctamente.
-*/
 
 var API_URL = "/api/v1/university-indicators";
 var table;
@@ -9,11 +5,11 @@ var currentButton ="";
 var request;
 var offset = parseInt(0);
 var apikey = "";
+var first = true;
 
 
 
 $(document).ready(()=>{
-  //INICIALIZAMOS TABLA.
   console.log("JQUERY READY!");
 
   $("#show-data").click(showDataButton);
@@ -66,7 +62,7 @@ function showFunction(){
 }
 
 function post(){
-  //makeRequest(type, apikey, offset, limit, community, year, vacancies, demand);
+  //makeRequest(type, apikey, offset, limit, fromm, to, community, year, vacancies, demand);
   console.log("function post");
   makeRequest("POST", $("#apikey-input").val(), undefined, undefined, undefined, undefined,
     $("#community-input").val(), $("#year-input").val(), $("#vacancies-input").val(), $("#demand-input").val());
@@ -145,15 +141,18 @@ function makeRequest(type, apikey, offset2, limit, fromm, to, community, year, v
       "url": url,
       async: false
     });
+    /*
     request.done(()=>{
       console.log("function makeRequest - GET - done")
-      offset += parseInt($("#limit").val());
+      offset = parseInt($("#limit").val());
     });
+    */
   }else if(type == "POST"){
     //community and year must be undefined.
     console.log("function makeRequest - POST.");
     if(apikey != undefined && apikey.length > 0) url += "?apikey="+apikey;
-    datum = '[{"community":"'+$("#community-input").val()+'", "year":"'+$("#year-input").val()+'", "vacancies":"'+$("#vacancies-input").val()+'", "demand":"'+$("#demand-input").val()+'}]';
+    datum = '[{"community":"'+$("#community-input").val()+'", "year":"'+$("#year-input").val()+'", "vacancies":'+$("#vacancies-input").val()+', "demand":'+$("#demand-input").val()+'}]';
+    console.log("makeRequest - post - datum: "+datum)
     request = $.ajax({
       url : url,
       type : "POST",
@@ -168,7 +167,7 @@ function makeRequest(type, apikey, offset2, limit, fromm, to, community, year, v
     if(year != undefined && year.length > 0) url += "/"+year;
     if(apikey != undefined && apikey.length > 0) url += "?apikey="+apikey;
     console.log("function makeRequest - PUT - URL: "+url);
-    datum = '[{"community":"'+$("#community-input").val()+'", "year":"'+$("#year-input").val()+'", "vacancies":"'+$("#vacancies-input").val()+'", "demand":"'+$("#demand-input").val()+'}]';
+    datum = '[{"community":"'+$("#community-input").val()+'", "year":"'+$("#year-input").val()+'", "vacancies":'+$("#vacancies-input").val()+', "demand":'+$("#demand-input").val()+'}]';
     request = $.ajax({
       url : url,
       type : "PUT",
@@ -279,30 +278,60 @@ function reload(){
 
 function nextPage(){
   console.log("function nextPage");
-  makeRequest("GET", $("#apikey-input").val(), offset + parseInt($("#limit").val()), $("#limit").val(), $("#community-input").val(), $("#year-input").val(),
-    undefined, undefined);
+  var url = API_URL;
+    if($("#community-input").val() != undefined && $("#community-input").val().length > 0) url += "/"+$("#community-input").val();
+    if($("#year-input").val() != undefined && $("#year-input").val().length > 0) url += "/"+$("#year-input").val();
+    if($("#apikey-input").val() != undefined && $("#apikey-input").val().length > 0) url += "?apikey="+$("#apikey-input").val();
+    if(first) offset += parseInt($("#limit").val());
+    url += "&offset="+offset;
+    if($("#limit").val() !=undefined) url += "&limit="+$("#limit").val();
+    if(parseInt($("#from-input").val()) != undefined && parseInt($("#from-input").val()) > 0) url += "&from="+parseInt($("#from-input").val());
+    if(parseInt($("#to-input").val()) != undefined && parseInt($("#to-input").val()) > 0) url += "&to="+parseInt($("#to-input").val());
+    console.log("function nextPage - URL: "+url);
+    request = $.ajax({
+      "type": "GET",
+      "url": url,
+      async: false
+    });
   request.done(()=>{
     console.log("function nextPage - done")
-    offset += parseInt($("#limit").val());
-  })
+    //offset += parseInt($("#limit").val());
+    first = true;
+
+  });
+  console.log("function nextPage - tras req.done - offset: "+offset);
+  request.fail(()=>{
+    first = false;
+  });
   makeTable(request);
   checkStatus(request);
 }
 
 function previousPage(){
   console.log("function nextPage");
-  var offset2 = offset;
-  offset2 -= parseInt($("#limit").val());
-  if(offset2 < 0){
-    offset2 = parseInt(0);
-  }
-  makeRequest("GET", $("#apikey-input").val(), offset2, $("#limit").val(), $("#community-input").val(), $("#year-input").val(),
-    undefined, undefined);
-  request.done(()=>{
-    console.log("function nextPage - done");
-    offset -= parseInt($("#limit").val());
-    if(offset < 0){offset = parseInt(0);}
-  });
+    var url = API_URL;
+      if($("#community-input").val() != undefined && $("#community-input").val().length > 0) url += "/"+$("#community-input").val();
+      if($("#year-input").val() != undefined && $("#year-input").val().length > 0) url += "/"+$("#year-input").val();
+      if($("#apikey-input").val() != undefined && $("#apikey-input").val().length > 0) url += "?apikey="+$("#apikey-input").val();
+      url += "&offset="+(offset -parseInt($("#limit").val()));
+      if($("#limit").val() !=undefined) url += "&limit="+$("#limit").val();
+      if(parseInt($("#from-input").val()) != undefined && parseInt($("#from-input").val()) > 0) url += "&from="+parseInt($("#from-input").val());
+      if(parseInt($("#to-input").val()) != undefined && parseInt($("#to-input").val()) > 0) url += "&to="+parseInt($("#to-input").val());
+      console.log("function nextPage - URL: "+url);
+      request = $.ajax({
+        "type": "GET",
+        "url": url,
+        async: false
+      });
+    request.done(()=>{
+      console.log("function nextPage - done")
+      offset -= parseInt($("#limit").val());
+      if(offset<0){
+        offset = parseInt(0);
+        first = true;
+      }
+    });
+    console.log("function nextPage - offset tras actualizacion: "+offset);
   makeTable(request);
   checkStatus(request);
 }
