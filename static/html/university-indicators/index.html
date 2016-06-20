@@ -16,6 +16,8 @@
     <script src="/lib/jquery.cooltable.js"></script>
     <!-- AUXILIAR -->
     <script type="text/javascript" src="/lib/htmlFunctions2.js"></script>
+    <!-- CSS -->
+    <link href="/css/style.css" rel="stylesheet" type="text/css">
   </head>
 
   <body>
@@ -23,20 +25,20 @@
 
 <!--  BOTONES ADD, UPDATE, DELETE...  -->
     <div class="left" float="left;">
-      <button id="show-data" type="button"  class="waves-effect waves-light btn">
+      <button id="show-data" type="button"  >
         Show data</button>
 
-      <button id="add-data" type="button" class="waves-effect waves-light btn">
+      <button id="add-data" type="button" >
         Add data</button>
 
-      <button id="update-data" type="button" class="waves-effect waves-light btn">
+      <button id="update-data" type="button" >
         Update</button>
 
-      <button id="deleteall-data" type="button" class="waves-effect waves-light btn">
+      <button id="deleteall-data" >
         Delete all</button>
-      <button id="delete-data" class="btn waves-effect waves-light material-icons">
+      <button id="delete-data" >
         Detele selected</button>
-      <button id="load-initial-data" type="button" class="waves-effect waves-light btn">Load data</button>
+      <button id="load-initial-data" type="button" >Load data</button>
       </div>
 
   <!-- FORMULARIOS -->
@@ -64,20 +66,20 @@
           </div>
 
           <div class="center">
-            <button id="previous-page" class="btn waves-effect">Previous page</button>
-            <button id="next-page" type="button" class="waves-effect waves-light btn">Next page</button>
+            <button id="previous-page" >Previous page</button>
+            <button id="next-page" type="button" >Next page</button>
           </div>
         </div>
 
         <br></br>
 
 <!-- LOG -->
-  <div  class="container center"style="display:none;" id="logDiv">
+  <div  style="display:none;" id="logDiv">
     <br></br>
     <br></br>
     <br></br>
     <p id="log"></p>
-    <button class="btn waves-effect waves-light material-icons center-btn" onclick="logButton()">OK</button>
+    <button  id="log-button">OK</button>
     <br></br>
     <br></br>
     <br></br>
@@ -87,8 +89,8 @@
     <br></br>
   </div>
 <!-- TABLA VISUALIZACIÓN DE DATOS -->
-      <div id="tabla">
-      </div>
+      <table id="tabla">
+      </table>
 
   </body>
 </html>

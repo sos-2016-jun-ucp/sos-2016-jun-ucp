@@ -41,8 +41,6 @@ $(document).ready(()=>{
     //console.log("charFunction2 - request.done - data: "+data);
     datosM = JSON.parse(data);
     console.log("datosM done: "+data);
-
-
   });//done api externa
 
   //Integracion
@@ -173,7 +171,7 @@ for(var y=0; y< datosM.length;y++){
               text: 'University vacancies per autonomuos community and year/Films title related to Marlon Brando'
           },
           subtitle: {
-              text: 'Source: http://www.mecd.gob.es/'
+              text: 'Source: http://www.mecd.gob.es/ and https://moviesapi.com/(API)'
           },
           xAxis: {
               categories: categorias0,

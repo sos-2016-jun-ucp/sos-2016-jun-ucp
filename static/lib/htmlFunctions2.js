@@ -21,6 +21,8 @@ $(document).ready(()=>{
   $("#previous-page").click(previousPage);
   $("#next-page").click(nextPage);
   $("#delete-data").click(deleteButton);
+  $("#log-button").click(logButton);
+
 
 });
 
@@ -93,7 +95,7 @@ function deleteAll(){
   checkStatus(request);
 }
 
-function detelee(){
+function deletee(){
   console.log("function delete");
   makeRequest("DELETE", $("#apikey-input").val(), undefined, undefined, undefined, undefined, $("#community-input").val(), $("#year-input").val(),
     undefined, undefined);
@@ -191,7 +193,7 @@ function makeRequest(type, apikey, offset2, limit, fromm, to, community, year, v
     if(community != undefined && community.length > 0) url += "/"+community;
     if(year != undefined && year.length > 0) url += "/"+year;
     if(apikey != undefined && apikey.length > 0) url += "?apikey="+apikey;
-    console.log("function makeRequest - PUT - URL: "+url);
+    console.log("function makeRequest - DELETE - URL: "+url);
     request = $.ajax({
       url : url,
       type : "DELETE",
@@ -220,7 +222,8 @@ function makeTable(request){
   }
   var pageSize = data.length;
   var rowSettings = {evenRowStyle:{"background":"#d8e6f0"},oddRowStyle:{"background":"#fcfcfc"},
-                    hoverStyle:{"background-color":"#99CCFF"}};
+                    hoverStyle:{"background-color":"#99CCFF"}, rowFunctions:
+        [{eventType:"click",functionToCall:rowClicked}]};
   tabla = new CoolTable('tabla',metadata,newData,'coolgrid',pageSize,rowSettings);
   tabla.drawTable();
 
@@ -233,12 +236,17 @@ function makeTable(request){
 
 }
 
+function rowClicked(){
+  console.log('clicked on a row')
+      $(this).toggleClass("highlight");
+}
+
 
 
 function checkStatus(request){
   console.log("function checkStatus");
   //console.log("function checkStatus - status: "+request.jqXHR.status);
-  request.always((jqXHR,status)=>{
+  request.done((data,jqXHR,status)=>{
     console.log("function checkStatus - request.always");
     if(jqXHR.status == 400){
       console.log("function checkStatus - status==400.");

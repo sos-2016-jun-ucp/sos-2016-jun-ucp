@@ -1,10 +1,10 @@
 // URI:/api/v1/university-indicators
 var fs = require('fs');
 var lib = require('./libUniversityIndicators.js');
-var passport = require('passport');
-LocalAPIKeyStrategy = require('passport-localapikey-update').Strategy;
+//var passport = require('passport');
+//LocalAPIKeyStrategy = require('passport-localapikey-update').Strategy;
 
-passport.use(new LocalAPIKeyStrategy((apikey, done)=> { done(null,apikey); }));
+//passport.use(new LocalAPIKeyStrategy((apikey, done)=> { done(null,apikey); }));
 
 exports.WriteAccess = (req, res, next)=> {
     passport.authenticate('localapikey', (err, apikey, info) =>{
