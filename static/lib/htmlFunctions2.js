@@ -99,14 +99,14 @@ function deletee(){
   console.log("function delete");
   makeRequest("DELETE", $("#apikey-input").val(), undefined, undefined, undefined, undefined, $("#community-input").val(), $("#year-input").val(),
     undefined, undefined);
-  checkStatus(request);
-  request.done((data,status,jqXHR)=>{
+//  checkStatus(request);
+  //request.done((data,status,jqXHR)=>{
     console.log("function update - done");
     makeRequest("GET", "read", offset, $("#limit").val(), $("from-input").val(), $("to-input").val(), undefined, undefined,
       undefined, undefined);
     makeTable(request);
     checkStatus(request);
-  });
+  //});
 }
 
 function loadInitialData(){
@@ -206,7 +206,7 @@ function makeRequest(type, apikey, offset2, limit, fromm, to, community, year, v
 
 
 function makeTable(request){
-  console.log("function makeTable(dynatable)");
+  console.log("function makeTable");
 
   request.done((data,status,jqXHR) =>{
     console.log("function makeTable - request.done");
@@ -246,7 +246,7 @@ function rowClicked(){
 function checkStatus(request){
   console.log("function checkStatus");
   //console.log("function checkStatus - status: "+request.jqXHR.status);
-  request.done((data,jqXHR,status)=>{
+  request.always((jqXHR,status)=>{
     console.log("function checkStatus - request.always");
     if(jqXHR.status == 400){
       console.log("function checkStatus - status==400.");

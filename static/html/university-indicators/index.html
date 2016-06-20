@@ -18,42 +18,51 @@
     <script type="text/javascript" src="/lib/htmlFunctions2.js"></script>
     <!-- CSS -->
     <link href="/css/style.css" rel="stylesheet" type="text/css">
+    <script src="/css/HTML-KickStart-master/js/kickstart.js"></script> <!-- KICKSTART -->
+    <link rel="stylesheet" href="/css/HTML-KickStart-master/css/kickstart.css" media="all" /> <!-- KICKSTART -->
   </head>
 
   <body>
-    <h5 class="center">University indicators</h5>
+    <h5 class="center top">University indicators</h5>
 
 <!--  BOTONES ADD, UPDATE, DELETE...  -->
-    <div class="left" float="left;">
-      <button id="show-data" type="button"  >
+    <div class="top center" >
+      <button id="show-data"  type="button" class="medium green fa fa-play-circle" >
         Show data</button>
 
-      <button id="add-data" type="button" >
+      <button id="add-data" type="button" class="medium green fa fa-upload">
         Add data</button>
 
-      <button id="update-data" type="button" >
+      <button id="update-data"  type="button" class="button orange fa fa-upload">
         Update</button>
 
-      <button id="deleteall-data" >
+      <button id="deleteall-data"  class="medium red fa fa-minus-square">
         Delete all</button>
-      <button id="delete-data" >
+      <button id="delete-data" class="medium red fa fa-minus-square">
         Detele selected</button>
-      <button id="load-initial-data" type="button" >Load data</button>
+      <button id="load-initial-data" type="button"  class="medium green fa fa-play-circle">Load data</button>
       </div>
 
   <!-- FORMULARIOS -->
   <br></br>
 
-        <div id="form" class="container">
+        <div id="form" class="vertical">
           <div>
-            <label for="apikey-input">Apikey:</label><input id="apikey-input" value="read" class="">
-            <label>Community:</label><input id="community-input" class="">
-            <label>Year:</label><input id="year-input" class="">
-            <label>Vacancies:</label><input id="vacancies-input" class="">
-            <label>Demand:</label><input id="demand-input" class="">
-            <label>From year:</label><input id="from-input" class="">
-            <label>To year:</label><input id="to-input" class="">
-            <button id="form-button" class="btn waves-effect waves-light material-icons right">Submit</button>
+            <label for="apikey-input">Apikey:</label>
+            <input id="apikey-input" type="text" value="read" class="">
+            <label for="community-input">Community:</label>
+            <input id="community-input" type="text"class="">
+            <label>Year:</label>
+            <input id="year-input" type="text"class="">
+            <label>Vacancies:</label>
+            <input id="vacancies-input" type="text"class="">
+            <label>Demand:</label>
+            <input id="demand-input" type="text"class="">
+            <label>From year:</label>
+            <input id="from-input" type="text"class="">
+            <label>To year:</label>
+            <input id="to-input" type="text"class="">
+            <button id="form-button" class="blue fa fa-star">Submit</button>
           </div>
 
           <div id="pagination" class="left">
@@ -66,20 +75,20 @@
           </div>
 
           <div class="center">
-            <button id="previous-page" >Previous page</button>
-            <button id="next-page" type="button" >Next page</button>
+            <button id="previous-page" class="medium pink fa fa-play-circle">Previous page</button>
+            <button id="next-page" type="button" class="medium pink fa fa-play-circle">Next page</button>
           </div>
         </div>
 
         <br></br>
 
 <!-- LOG -->
-  <div  style="display:none;" id="logDiv">
+  <div  style="display:none;" id="logDiv" class="top alt1">
     <br></br>
     <br></br>
     <br></br>
-    <p id="log"></p>
-    <button  id="log-button">OK</button>
+    <p id="log" class="top alt1"></p>
+    <button  id="log-button" class="medium green fa fa-play-circle">OK</button>
     <br></br>
     <br></br>
     <br></br>
