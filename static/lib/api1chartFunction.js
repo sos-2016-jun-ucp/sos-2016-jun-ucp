@@ -1,3 +1,6 @@
+//A
+console.log("A");
+
 $(document).ready(()=>{
   var datos = [];
   var datosM = [];
@@ -7,9 +10,13 @@ $(document).ready(()=>{
         "url": "/api/v1/university-indicators?apikey=read",
         async:false
       });
+      console.log("C")
+  //C
   request.done((data,status,jqXHR)=>{
+    //B
+    console.log("B")
     datos = data;
-    console.log("datos done: "+datos)
+    //console.log("datos done: "+datos)
     for(i=0;i<datos.length;i++){
       //console.log("Community "+i+": "+datos[i]['community']);
     }
@@ -40,7 +47,7 @@ $(document).ready(()=>{
   request.done((data,status,jqXHR)=>{
     //console.log("charFunction2 - request.done - data: "+data);
     datosM = JSON.parse(data);
-    console.log("datosM done: "+data);
+    //console.log("datosM done: "+data);
   });//done api externa
 
   //Integracion
@@ -63,6 +70,8 @@ var categorias0 = datos.filter(function(da){
 var categorias1 = datosM.filter(function(da){
   //console.log("Categorias0 año: "+da['year'])
   if(added.indexOf(da['year']) < 0){
+    //D
+    console.log("D");
     //console.log("Categorias0 añadiendo: "+da['year'])
     added.push(da['year']);
     return true;
@@ -81,7 +90,7 @@ categorias0 = categorias0.concat(categorias1);
 categorias0.sort((a,b)=>{
   return a - b;
 });//ordenamos por año, de menor a mayor
-console.log("categorias0 ordenado: "+categorias0);
+//console.log("categorias0 ordenado: "+categorias0);
 
 
 
@@ -94,7 +103,8 @@ console.log("categorias0 ordenado: "+categorias0);
 for(j=0;j<categorias0.length;j++){
   //console.log("categorias0 "+j+": "+categorias0[j]);
 }
-
+//E
+console.log("E");
 var valores = [];
 added = [];
 var comunidades = datos.filter((da)=>{
@@ -203,3 +213,5 @@ for(var y=0; y< datosM.length;y++){
 
 
 });
+//F
+console.log("F");

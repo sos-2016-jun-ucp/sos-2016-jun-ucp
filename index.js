@@ -1,16 +1,4 @@
 
-/*
-//-implementar borrado de elemento aislado.
-//-div log en la guion
-//-llamadas sincronas y asincronas
-//-respuestas bad request en lugar de 401 y 403
-//-widget aspecto GUI
--funcion update() no hace request de todos los elementos una vez hecha request para PUT.
--cuando se hace get sobre tabla vacia, checkStatus() no ejecuta correctamente.
--cambiar apikey por la de governify en todos los archivos.
-*/
-
-
 //Inicializar módulos/
 var express = require("express");
 var bodyParser = require("body-parser"); //Transformar JSON a VARIABLES o viceversa
